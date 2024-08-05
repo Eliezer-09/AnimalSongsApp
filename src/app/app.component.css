@@ -1,16 +1,16 @@
-/* Asegurar que el fondo cubra toda la pantalla y evitar el scroll */
+/* Asegurar que el fondo cubre toda la pantalla y evitar el scroll */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden; /* Evitar el scroll */
   }
   
   .jungle {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh; /* Usar 100vh para asegurar que el fondo cubra toda la pantalla */
     background: url('/assets/images/selva-lago.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
