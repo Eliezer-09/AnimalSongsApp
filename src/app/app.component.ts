@@ -1,13 +1,37 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [CommonModule, FormsModule]
 })
 export class AppComponent {
-  title = 'AnimalSongsApp';
+  title = 'Animal Songs App';
+  selectedAnimal: string | null = null;
+  message: string | null = null;
+
+  selectAnimal(animal: string) {
+    this.selectedAnimal = animal;
+    this.message = null;
+  }
+
+  getSoundsForAnimal(animal: string): string[] {
+    const sounds: { [key: string]: string[] } = {
+      rana: ['brr', 'birip', 'brrah', 'croac'],
+      libelula: ['fiu', 'plop', 'pep'],
+      grillo: ['cric-cric', 'trri-trri', 'bri-bri']
+    };
+    return sounds[animal] || [];
+  }
+
+  playSound(animal: string, sound: string) {
+    // Aquí se puede definir la lógica para reproducir los sonidos.
+    // Por ahora, solo mostraremos un mensaje.
+    this.message = `${animal} hace ${sound} y los siguientes sonidos son: ${this.getSoundsForAnimal(animal).join(', ')}`;
+    this.selectedAnimal = null;
+  }
 }
